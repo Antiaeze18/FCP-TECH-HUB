@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - FCP TECH HUB</title>
+    <meta name="description" content="Register for FCP TECH HUB programming courses">
+    <meta name="keywords" content="register, signup, programming courses, FCP TECH HUB">
+    
+    <meta property="og:title" content="Register - FCP TECH HUB">
+    <meta property="og:description" content="Register for FCP TECH HUB programming courses">
+    
+    <meta name="twitter:title" content="Register - FCP TECH HUB">
+    <meta name="twitter:description" content="Register for FCP TECH HUB programming courses">
+
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/lucide-static@0.516.0/font/lucide.css" rel="stylesheet">
+
+    <style type="text/tailwindcss">
+    @layer theme {
+        :root {
+            --primary-color: #3b82f6;
+            --secondary-color: #f8fafc;
+            --accent-color: #10b981;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --border-color: #e2e8f0;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f1f5f9;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --glow-color: rgba(59, 130, 246, 0.5);
+        }
+        
+        [data-theme="dark"] {
+            --primary-color: #60a5fa;
+            --secondary-color: #1e293b;
+            --accent-color: #34d399;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --border-color: #334155;
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --glow-color: rgba(96, 165, 250, 0.5);
+        }
+    }
+
+    @layer base {
+        * {
+            @apply transition-colors duration-300;
+        }
+        
+        body {
+            @apply bg-[var(--bg-primary)] text-[var(--text-primary)];
+        }
+    }
+
+    @layer components {
+        .btn-primary {
+            @apply bg-[var(--primary-color)] text-white px-6 py-3 rounded-xl font-semibold 
+                   transform hover:scale-105 hover:shadow-2xl transition-all duration-300 
+                   shadow-lg hover:shadow-[0_0_30px_var(--glow-color)] relative overflow-hidden;
+        }
+        
+        .input-field {
+            @apply w-full px-4 py-3 border-2 border-[var(--border-color)] rounded-xl 
+                   bg-[var(--bg-primary)] text-[var(--text-primary)] placeholder-[var(--text-secondary)]
+                   focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] 
+                   focus:border-[var(--primary-color)] focus:shadow-[0_0_15px_var(--glow-color)]
+                   transition-all duration-300;
+        }
+        
+        .school-logo {
+            @apply w-20 h-20 rounded-3xl shadow-2xl hover:shadow-[0_0_40px_var(--glow-color)]
+                   transform hover:rotate-6 transition-all duration-500 animate-pulse;
+        }
+        
+        .theme-toggle {
+            @apply fixed top-4 right-4 z-50 p-3 bg-[var(--bg-primary)] border-2 border-[var(--border-color)]
+                   rounded-full shadow-lg hover:shadow-[0_0_20px_var(--glow-color)] 
+                   transform hover:scale-110 transition-all duration-300 cursor-pointer;
+        }
+        
+        .error-message {
+            @apply text-red-400 text-sm mt-1 animate-pulse;
+        }
+        
+        .form-card {
+            @apply bg-[var(--bg-primary)] bg-opacity-90 backdrop-blur-lg rounded-3xl shadow-2xl p-8 
+                   border border-[var(--border-color)] border-opacity-50 hover:shadow-[0_30px_60px_var(--shadow-color)]
+                   transform hover:scale-[1.02] transition-all duration-500;
+        }
+    }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel" src="register-app.js"></script>
+</body>
+</html>

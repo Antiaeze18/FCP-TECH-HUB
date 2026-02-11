@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FCP TECH HUB - Learn Programming</title>
+    <meta name="description" content="FCP TECH HUB - Premier programming school offering Web Development, Python, Java, and Data Science courses">
+    <meta name="keywords" content="programming school, web development, python, java, data science, coding bootcamp">
+    
+    <!-- Open Graph meta tags -->
+    <meta property="og:title" content="FCP TECH HUB - Learn Programming">
+    <meta property="og:description" content="Premier programming school offering Web Development, Python, Java, and Data Science courses">
+    
+    <!-- Twitter meta tags -->
+    <meta name="twitter:title" content="FCP TECH HUB - Learn Programming">
+    <meta name="twitter:description" content="Premier programming school offering Web Development, Python, Java, and Data Science courses">
+
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/lucide-static@0.516.0/font/lucide.css" rel="stylesheet">
+
+    <!-- Predefined Tailwind CSS, use it as needed, or update base on your -->
+    <style type="text/tailwindcss">
+    @layer theme {
+        :root {
+            --primary-color: #3b82f6;
+            --secondary-color: #f8fafc;
+            --accent-color: #10b981;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --border-color: #e2e8f0;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f1f5f9;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --glow-color: rgba(59, 130, 246, 0.5);
+        }
+        
+        [data-theme="dark"] {
+            --primary-color: #60a5fa;
+            --secondary-color: #1e293b;
+            --accent-color: #34d399;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --border-color: #334155;
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --glow-color: rgba(96, 165, 250, 0.5);
+        }
+    }
+
+    @layer base {
+        * {
+            @apply transition-colors duration-300;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            @apply bg-[var(--bg-primary)] text-[var(--text-primary)];
+        }
+    }
+
+    @layer components {
+        .btn-primary {
+            @apply bg-[var(--primary-color)] text-white px-6 py-3 rounded-xl font-semibold 
+                   transform hover:scale-105 hover:shadow-2xl transition-all duration-300 
+                   shadow-lg hover:shadow-[0_0_30px_var(--glow-color)] relative overflow-hidden;
+        }
+        
+        .btn-primary::before {
+            content: '';
+            @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent 
+                   transform -skew-x-12 -translate-x-full hover:translate-x-full transition-transform duration-700;
+        }
+        
+        .btn-secondary {
+            @apply bg-[var(--bg-primary)] border-2 border-[var(--primary-color)] text-[var(--primary-color)] 
+                   px-6 py-3 rounded-xl font-semibold transform hover:scale-105 hover:bg-[var(--primary-color)] 
+                   hover:text-white transition-all duration-300 shadow-lg hover:shadow-[0_0_20px_var(--glow-color)];
+        }
+        
+        .input-field {
+            @apply w-full px-4 py-3 border-2 border-[var(--border-color)] rounded-xl 
+                   bg-[var(--bg-primary)] text-[var(--text-primary)] placeholder-[var(--text-secondary)]
+                   focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] 
+                   focus:border-[var(--primary-color)] focus:shadow-[0_0_15px_var(--glow-color)]
+                   transition-all duration-300;
+        }
+        
+        .card {
+            @apply bg-[var(--bg-primary)] rounded-2xl shadow-xl p-6 sm:p-8 border border-[var(--border-color)]
+                   transform hover:scale-105 hover:shadow-2xl transition-all duration-300
+                   hover:shadow-[var(--shadow-color)];
+        }
+        
+        .card-hover {
+            @apply hover:shadow-[0_20px_50px_var(--shadow-color)] hover:-translate-y-2;
+        }
+        
+        .school-logo {
+            @apply w-16 h-16 rounded-2xl shadow-lg hover:shadow-[0_0_25px_var(--glow-color)]
+                   transform hover:rotate-6 transition-all duration-300;
+        }
+        
+        .theme-toggle {
+            @apply fixed top-4 right-4 z-50 p-3 bg-[var(--bg-primary)] border-2 border-[var(--border-color)]
+                   rounded-full shadow-lg hover:shadow-[0_0_20px_var(--glow-color)] 
+                   transform hover:scale-110 transition-all duration-300 cursor-pointer;
+        }
+        
+        .hero-text {
+            @apply bg-gradient-to-r from-[var(--primary-color)] via-[var(--accent-color)] to-[var(--primary-color)]
+                   bg-clip-text text-transparent animate-pulse;
+        }
+        
+        .course-icon {
+            @apply transform group-hover:scale-110 group-hover:rotate-12 transition-all duration-300;
+        }
+        
+        .nav-link {
+            @apply relative overflow-hidden transform hover:scale-105 transition-all duration-300;
+        }
+        
+        .nav-link::after {
+            content: '';
+            @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent
+                   transform -translate-x-full hover:translate-x-full transition-transform duration-500;
+        }
+    }
+
+    @layer utilities {
+        .text-glow {
+            text-shadow: 0 0 20px var(--glow-color);
+        }
+        
+        .glass-effect {
+            @apply bg-white/10 backdrop-blur-sm border border-white/20;
+        }
+        
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .animate-glow {
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { box-shadow: 0 0 20px var(--glow-color); }
+            to { box-shadow: 0 0 30px var(--glow-color), 0 0 40px var(--glow-color); }
+        }
+    }
+    </style>
+
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel" src="app.js"></script>
+</body>
+</html>
